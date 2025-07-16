@@ -10,6 +10,7 @@ class client{
 	public static DataOutputStream out = null;
 	public static DataInputStream in = null;
 	public static listner thread;
+	public static String ip = "127.0.0.1";
 
 	public static String[] animals = {"monkey","donkey","wolf","tiger","lion","kangaroo","zebra","owl","deer"};
 
@@ -17,11 +18,15 @@ class client{
 		
 		String name = null;
 		
-		if(args.length > 0){
+		if(args.length > 0 && args[0] != "" && args[0].equals("") && !args[0].isEmpty()){
 			name = args[0];
 		}else{
 			Random random = new Random();
 			name = "anonymous-" + animals[random.nextInt(animals.length)] + "-" + random.nextInt(1000) ;
+		}
+
+		if(args.length >= 2){
+			ip = args[1];
 		}
 
 		System.out.println(name);
@@ -29,7 +34,7 @@ class client{
 		try {
 
 			// create socket and connect (address , port)
-			soc = new Socket("192.168.29.2",8080);
+			soc = new Socket(ip,8080);
 			System.out.println("Connected to the server");
 			out = new DataOutputStream(soc.getOutputStream());
 			in = new DataInputStream(soc.getInputStream());
@@ -40,10 +45,16 @@ class client{
 			out.writeUTF(name);
 				
 
-		} catch (Exception e) {
+		}catch (java.net.UnknownHostException e){
+
+			System.out.println("Please enter a proper host IP");
+			return;
+
+		}catch (Exception e) {
 
 			System.out.println("Unable to connect to the server");
 			System.out.println(e);
+			return;
 
 		}
 		
@@ -80,7 +91,7 @@ class client{
 			input.close();
 			soc.close();
 
-		} catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println(e);
 		}
 

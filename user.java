@@ -228,7 +228,7 @@ class user extends Thread{
 
 	public void serverSays(String msg){
 		try {
-			out.writeUTF(Color.RED + msg + Color.RESET);
+			out.writeUTF(Color.red(msg));
 		} catch (Exception e) {
 			System.out.println("Something Went wrong when server was saying : " + msg);
 		}
@@ -267,7 +267,7 @@ class user extends Thread{
 
 	private void sysmsg(String msg){
 
-		final String message = Color.CYAN + msg + Color.RESET;
+		final String message = Color.cyan(msg);
 
 		try {
 			if(server.rooms.get(room) == null){
@@ -294,7 +294,7 @@ class user extends Thread{
 
 	private void broadcast(String msg){
 		
-		final String message = Color.BLUE + this.name + " : " + msg + Color.RESET;
+		final String message = Color.blue(this.name + " : " + msg);
 
 		try {
 			

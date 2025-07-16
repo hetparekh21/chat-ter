@@ -1,4 +1,4 @@
-public class Color {
+public final class Color {
 
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
@@ -22,5 +22,38 @@ public class Color {
     public static final String PURPLE_BOLD = "\033[1;35m"; // PURPLE
     public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
     public static final String WHITE_BOLD = "\033[1;37m";  // WHITE
+							   
+    public static String black(String str){
+	    return BLACK + str + RESET;
+    }
+
+    
+    public static String red(String str){
+	    return RED + str + RESET;
+    }
+
+    public static String green(String str){
+	    return GREEN + str + RESET;
+    }
+
+    public static String yellow(String str){
+	    return YELLOW + str + RESET;
+    }
+
+    public static String blue(String str){
+	    return BLUE + str + RESET;
+    }
+
+    public static String purple(String str){
+	    return PURPLE + str + RESET;
+    }
+
+    public static String cyan(String str){
+	    return CYAN + str + RESET;
+    }
+
+    public static String white(String str){
+	    return WHITE + str + RESET;
+    }
 
 }
